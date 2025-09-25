@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang = "de">
+
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leons erste Website</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel= "stylesheet" href="css/style.css"> 
+
+</head>
+<body> 
+    <header class="hero"> 
+                <img src="IMG/Leon.png.png" alt="Leon Logo" width="300">
+                <h1> Webentwicklung mit Leidenschaft </h1> 
+                <p> Hi, ich bin Leon – angehender Webentwickler! </p>       
+        <nav>
+            <ul>
+                <li><a href="#ueber-mich">Über mich</a></li>
+                <li><a href="#projekte">Projekte</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="ueber-mich" class="ueber-mich">
+    <div class="ueber-mich-container">
+        <div class="ueber-mich-bild">
+            <img src="IMG/portrait.png.png" alt="Bild von Leon">
+        </div>
+        <div class="ueber-mich-text">
+            <h2>Über mich</h2>
+            <p>
+                Hi, ich bin Leon 👋<br>
+                Aktuell lerne ich Webentwicklung, um bald als Freelancer durchzustarten.  
+                Mein Fokus liegt auf <strong>modernen, schnellen und benutzerfreundlichen Websites</strong>.  
+                Stück für Stück baue ich mein Portfolio auf und arbeite an meinen ersten Projekten. 🚀
+            </p>
+            <ul class="ueber-mich-fakten">
+                <li> - 💻 Leidenschaft für Webdesign & Entwicklung</li>
+                <li> - 📚 Ständiges Lernen & Ausprobieren</li>
+                <li> - 🚀 Ziel: Selbstständigkeit als Freelancer</li>
+            </ul>
+            <a href="#kontakt" class="cta-button">Lass zusammenarbeiten</a>
+        </div>
+    </div>
+</section>
+
+    <section id="projekte">
+        <h2>Meine Projekte</h2>
+        <div class="projekte-container">
+            <div class="projekt">
+                <h3> Projekt 1: Meine erste Website </h3>
+                <p>Dies ist meine erste eigene Website, ber der ich HTML und CSS gelernt habe </p>
+            </div>
+            <div class="projekt">
+                <h3> Projekt 2: Beispiel-Seite</h3>
+                <p>Ein kleines Übungsprojekt mit eigenm Logo und Design</p>
+            </div>
+        </div>
+    </section>
+
+<section id="kontakt">
+  <h2>Kontakt</h2>
+    <form action="#" method="post" class="kontakt-formular">
+
+        <div class="form-row">
+            <input type="text" name="name" placeholder="✍ Dein Name" required>
+            <input type="email" name="email" placeholder="📧Deine E-Mail" required>
+        </div>
+
+        <textarea name="nachricht" rows="5" placeholder="💬Deine Nachricht" required></textarea>
+        <button type="submit" id="sendButton">
+            <i class="fa-solid fa-paper-plane icon "></i>Absenden</button>
+    </form>
+</section>
+
+    <footer>
+        <p>© 2025 Leon Tyer</p>
+        <div class="social-icons">
+            <a href="https://github.com/LeonTyer"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener("scroll",  function() {
+        const projekte = document.querySelectorAll(".projekt");
+        projekte.forEach(p => {
+            const position= p.getBoundingClientRect().top;
+            if (position < window.innerHeight - 100){
+            p.classList.add("visible");
+         }
+        });
+    });
+    </script>
+    <script>
+    document.addEventListener("scroll", () => {
+        const bild = document.querySelector(".ueber-mich-bild img")
+        const text = document.querySelector(".ueber-mich-text");
+
+        [bild, text].forEach((el) => {
+            const position = el.getBoundingClientRect().top;
+            if (position < window.innerHeight - 100) {
+                el.classList.add("visible");
+            }
+        });
+    });
+    </script>
+    <script>
+        const button = document.getElementById("sendButton");
+        const icon = button.querySelector("i");
+
+        document.getElementById("sendButton").addEventListener("click", (e) => {
+            e.preventDefault(); //nur dür die DEMO später Löschen 
+
+            const icon= e.target.querySelector(".icon"); 
+
+            //Reset
+            icon.classList.remove("fly");
+            void icon.offsetWidth; //Trick zum Neustarten der Animation
+
+            //Start
+            icon.classList.add ("fly");
+
+            //Icon zurücksetzen ink.farbe
+            setTimeout(() => {
+                icon.classList.remove ("fly");
+                icon.classList.add("reset");
+                icon.style.color = ""; 
+            }, 1000);
+        });
+        
+    </script>
+</body>
+</html> 
